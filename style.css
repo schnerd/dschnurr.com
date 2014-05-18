@@ -1,0 +1,94 @@
+.clear{ clear:both;}
+
+body {
+	font-family: 'Roboto Slab', serif;
+	background:#fff;
+	color:#bbb;
+	font-weight: 200;
+}
+
+#wrapper {
+	width:300px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left: -150px;
+	margin-top: -140px;
+}
+
+#name {
+	font-family: 'Titillium Web', sans-serif;
+	color: #555;
+	font-size: 44px;
+	white-space: nowrap;
+	text-transform: uppercase;
+	letter-spacing: -2px;
+	line-height: 85%;
+}
+
+#experience {
+	margin: 8px 0;
+}
+
+#experience td {
+	vertical-align: middle;
+	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.position {
+	position:relative;
+	width:300px;
+	padding: 10px 0;
+}
+
+.position-name {
+	color:#555;
+	font-size:20px;
+}
+
+.position-title {
+	color:#bbb;
+	font-size:14px;
+	margin-top: 4px;
+}
+
+.position-date {
+	color:#bbb;
+	font-size: 10px;
+	line-height: 130%;
+}
+
+.position a {
+	color:#555;
+	text-decoration:none;
+}
+
+.position a:hover {
+	color:#999;
+}
+
+#contact-title {
+	font-size:20px;
+	float:left;
+	color:#555;
+}
+
+#contact-links {
+	margin-top:6px;
+	width: 300px;
+	text-align: center;
+}
+
+#contact-links a,
+#contact-links a:visited {
+	width:16px;
+	height:16px;
+	display:inline-block;
+	margin-right:2px;
+	text-decoration:none;
+	color: #555;
+}
+#contact-links a:hover {
+	color :#999;
+}
