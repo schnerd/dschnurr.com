@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 
 html {
 	border-top: 7px solid #3498db;
@@ -9,6 +12,10 @@ html {
 
 body {
 	background:#eee;
+}
+
+html, body {
+	height: 100%;
 }
 
 strong {
@@ -28,12 +35,18 @@ p a:hover {
 	color: #3498db;
 }
 
+#flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	height: 100%;
+}
+
 #wrapper {
 	width: 840px;
 	max-width: 100%;
 	box-sizing: border-box;
-	padding: 0 20px;
-	margin: 80px auto;
+	padding: 20px;
 	line-height: 1.3;
 	font-size: 1.2rem;
 }
