@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/dschnurr
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://dschnurr.com
+  * I am dschnurr (https://keybase.io/dschnurr) on keybase.
+  * I have a public key ASCO-9Kbv3wNLNAhXZHflAdH3eHn9WkXsI0LAAzIpfX5Qwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01208efbd29bbf7c0d2cd0215d91df940747dde1e7f56917b08d0b000cc8a5f5f9430a",
+      "host": "keybase.io",
+      "kid": "01208efbd29bbf7c0d2cd0215d91df940747dde1e7f56917b08d0b000cc8a5f5f9430a",
+      "uid": "6185e36ef5b4447734b7616c89939c19",
+      "username": "dschnurr"
+    },
+    "merkle_root": {
+      "ctime": 1578334468,
+      "hash": "d45495cd195477172af8ae9a24e62318a6d622359f5ddfcc6ebc1058fff079bb5303928256711324795da4a4e4565a0dfacdcc9a3898af470a7d21401d3f0b24",
+      "hash_meta": "c06997d774278df8957080b606865a803214df308f87ef42b8b23182acd41367",
+      "seqno": 14109126
+    },
+    "service": {
+      "entropy": "eQ1oK3r3XKh5JcYkkEX4Fggb",
+      "hostname": "dschnurr.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.1.1"
+  },
+  "ctime": 1578334488,
+  "expire_in": 504576000,
+  "prev": "aeb0c5d2a229a7f5e2d9e196e29a38c9ecda9ddac77358443c599ffe8fec4f3e",
+  "seqno": 11,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgjvvSm798DSzQIV2R35QHR93h5/VpF7CNCwAMyKX1+UMKp3BheWxvYWTESpcCC8QgrrDF0qIpp/Xi2eGW4po4yezandrHc1hEPFmf/o/sTz7EIIi0AKtZmtDUxTlKhFJsTOJvjcxotMf06Ow9LdUNwiKuAgHCo3NpZ8RA2A5SLBteXux3IESrd0wFB7nW+RLcLBSPQliW652j+49+nggzqYIQQMMcjlFCGPjNhp/6z3TGsy//s1Vh1vzFA6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEICo8SioTaf5FlAfpW9TNHo94nV1yFUx+Wc5t0kLtq+ZAo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/dschnurr
+
+==================================================================
