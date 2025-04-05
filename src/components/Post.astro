@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import { type CollectionEntry } from "astro:content";
+import PostMeta from "./PostMeta.astro";
+
+interface Props {
+  inList?: boolean;
+  post: CollectionEntry<"posts">;
+}
+
+const {inList, post} = Astro.props;
+const isShortContent = post.body?.length < 400;
+const { Content } = await post.render();
+---
+
+{inList ? (
+  <a href={`/posts/${post.slug}`}>
+    <PostMeta inList={inList} post={post} />
+  </a>
+) : (
+  <PostMeta inList={inList} post={post} />
+)}
+<article class={isShortContent ? "short-content" : ""}>
+  {post.body ? (
+    <Content />
+  ) : post.data.image ? (
+    <Image src={post.data.image} alt="asdf" width="1024" height="1024" class="rounded-xl" />
+  ) : null}
+</article>
+
+<style>
+  article {
+    font-size: 16px;
+    img {
+      border: none;
+    }
+    img:first-child {
+      margin-top: 0.5rem;
+    }
+    img:last-child {
+      margin-bottom: 0;
+    }
+    p {
+      margin: 0.6rem 0;
+    }
+    p:first-child {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  article.short-content {
+    font-size: 18px;
+  }
+</style>

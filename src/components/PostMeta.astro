@@ -1,0 +1,45 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { formatDate, labelForSource } from "../lib/utils";
+
+interface Props {
+  inList?: boolean;
+  post: CollectionEntry<"posts">;
+}
+
+const {inList, post} = Astro.props;
+---
+
+{post.data.title ? (
+  <a href={`/posts/${post.slug}`}>
+    <h1 class="text-xl font-medium">
+      {post.data.title}
+    </h1>
+  </a>
+) : null}
+<p class="mb-1 font-medium text-zinc-500 text">
+  {
+  // Link the date if not title is available
+  inList && !post.data.title ? (
+    <a href={`/posts/${post.slug}`}>
+      {formatDate(post.data.date)}
+    </a>
+  ) : (
+  formatDate(post.data.date)
+  )}
+  {post.data.source && (
+    <span>
+      &nbsp;on&nbsp;
+      <a href={post.data.source} target="_blank" class="text-sm social-link">
+        {labelForSource(post.data.source)}
+      </a>
+    </span>
+  )}
+</p>
+
+<style>
+  a.social-link {
+    color: inherit;
+    text-decoration: underline;
+  }
+</style>

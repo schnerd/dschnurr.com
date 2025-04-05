@@ -1,0 +1,28 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Post from "../../components/Post.astro";
+import { ellipsizeText, formatDate } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"posts">;
+
+const post = Astro.props;
+const pageTitle = post.data.title || (post.body ? ellipsizeText(post.body, 50) : formatDate(post.data.date));
+---
+
+<Layout
+  title={pageTitle}
+  description={post.data.description ?? ''}
+  image={post.data.image}
+>
+  <main class="md:pt-[3.6rem]">
+    <Post post={post}/>
+  </main>
+</Layout>

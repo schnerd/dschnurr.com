@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Layout from "../layouts/Layout.astro";
+import Post from "../components/Post.astro";
+
+const collection = await getCollection("posts");
+const posts = collection.slice(0, 20).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main class="md:pt-[18px]">
+    <h1 class="leading-none text-2xl font-medium mb-3">Recent posts</h1>
+    <ul class="flex flex-col gap-8">
+      {
+        posts.map((post) => (
+          <li>
+            <Post inList post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
