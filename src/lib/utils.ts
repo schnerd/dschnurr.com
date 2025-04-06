@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(date: Date) {
+export function formatDate(date: Date): string {
   return Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
@@ -16,15 +16,15 @@ export function formatDate(date: Date) {
   }).format(date);
 }
 
-export function labelForSource(source: string) {
-  if (source.includes('x.com')) {
-    return 'X';
-  } else if (source.includes('linkedin.com')) {
-    return 'LinkedIn';
+export function labelForSource(source: string): string | undefined {
+  if (source.includes("x.com")) {
+    return "X";
+  } else if (source.includes("linkedin.com")) {
+    return "LinkedIn";
   }
 }
 
-export function ellipsizeText(text: string, maxLength: number) {
+export function ellipsizeText(text: string, maxLength: number): string {
   if (text.length <= maxLength) {
     return text;
   }
