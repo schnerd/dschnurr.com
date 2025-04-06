@@ -1,4 +1,3 @@
-import rss from "@astrojs/rss";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 function stripTags(str: string) {
@@ -18,12 +17,12 @@ function postToString(post: CollectionEntry<"posts">) {
   }
   tags.url = `https://dschnurr.com/posts/${post.slug}`;
   tags.pubDate = post.data.date.toUTCString();
-  tags.body = stripTags(post.body ?? '');
+  tags.body = stripTags(post.body ?? "");
   const tagString = Object.entries(tags)
     .map(([key, value]) => {
       return `\n\t<${key}>${value}</${key}>`;
     })
-    .join('');
+    .join("");
 
   return `<post>${tagString}\n</post>`;
 }
@@ -33,6 +32,6 @@ export async function GET() {
   posts.sort((a, b) => {
     return b.data.date.getTime() - a.data.date.getTime();
   });
-    
+
   return new Response(posts.map(postToString).join("\n"));
 }

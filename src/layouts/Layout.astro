@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import { cn } from "../lib/utils";
 import "../styles/global.css";
@@ -67,7 +67,7 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body
     class="font-sans text-zinc-900 antialiased transition-colors dark:bg-zinc-900 dark:text-zinc-200"
@@ -81,7 +81,7 @@ const {
       <div class="md:max-w-[200px] md:flex-initial">
         <Header />
       </div>
-      <div class="md:max-w-xl md:flex-initial">
+      <div class="max-w-full md:w-[36rem] md:flex-initial">
         <slot />
       </div>
     </div>

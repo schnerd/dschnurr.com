@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import Post from "../../components/Post.astro";
+import Layout from "../../layouts/Layout.astro";
 import { ellipsizeText, formatDate } from "../../lib/utils";
 
 export async function getStaticPaths() {
@@ -14,15 +14,17 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"posts">;
 
 const post = Astro.props;
-const pageTitle = post.data.title || (post.body ? ellipsizeText(post.body, 50) : formatDate(post.data.date));
+const pageTitle =
+  post.data.title ||
+  (post.body ? ellipsizeText(post.body, 50) : formatDate(post.data.date));
 ---
 
 <Layout
   title={pageTitle}
-  description={post.data.description ?? ''}
+  description={post.data.description ?? ""}
   image={post.data.image}
 >
-  <main class="md:pt-[3.6rem]">
-    <Post post={post}/>
+  <main class="md:pt-[3.5rem]">
+    <Post post={post} />
   </main>
 </Layout>
