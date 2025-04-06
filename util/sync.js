@@ -15,7 +15,7 @@ You should take the input tweet text and extract the timestamp of the Tweet in t
 const MARKDOWN_SYSTEM_PROMPT = `
 You should take the input tweet text and transform it into a cleaned markdown representation of the content (body) of the tweet. The input text was extracted from the DOM using el.innerText, so may be messy or have formatting issues (e.g. an @ tag may be split on multiple lines). Your output should only contain the cleaned markdown representation of the content of the tweet – do not include any other output or preamble in your response.
 
-For any @mentions of other accounts, you should markdown hyperlink them to https://x.com/username
+For any @mentions of other accounts, you should markdown hyperlink them to https://x.com/username. If a raw URL is included in the tweet, you should markdown hyperlink it using the URL itself (without the http/s protocol) as the label for the hyperlink – ellipsized if needed.
 
 If the tweet is quoting another tweet, include a snippet of the quoted tweet at the top of the markdown using a blockquote, e.g.
 
@@ -107,6 +107,7 @@ ${tweetMdImages.join("\n\n")}
   // Resolve path from current dirname
   const safePath = path.resolve(import.meta.dirname, filePath);
   fs.writeFileSync(safePath, fileContent);
+  console.log("Wrote markdown file to: ", safePath);
 
   await browser.close();
 })();
