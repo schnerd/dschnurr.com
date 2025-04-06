@@ -65,7 +65,11 @@ If the tweet is quoting another tweet, include a snippet of the quoted tweet at 
   const tweetMd = mdResponse.output_text;
 
   const tweetId = url.split("/").pop();
-  const filenameTimestamp = dt.toISOString().replace(/:/g, "-").slice(0, 16);
+  const filenameTimestamp = dt
+    .toISOString()
+    .replace(/:/g, "-")
+    .slice(0, 16)
+    .replace("T", "-");
 
   // Deal with images
   const tweetMdImages = [];
@@ -107,7 +111,7 @@ ${tweetMdImages.join("\n\n")}
   // Resolve path from current dirname
   const safePath = path.resolve(import.meta.dirname, filePath);
   fs.writeFileSync(safePath, fileContent);
-  console.log("Wrote markdown file to: ", safePath);
+  console.log("Wrote markdown file to:", safePath);
 
   await browser.close();
 })();
