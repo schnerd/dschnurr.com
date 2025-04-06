@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { type CollectionEntry } from "astro:content";
+import { cn } from "../lib/utils";
 import PostMeta from "./PostMeta.astro";
 
 interface Props {
@@ -15,7 +16,7 @@ const { Content } = await post.render();
 
 <article>
   <PostMeta inList={inList} post={post} />
-  <div class={isShortContent ? "short-content" : ""}>
+  <div class={cn("post-content", isShortContent ? "short-content" : "")}>
     {
       post.body ? (
         <Content />
@@ -53,8 +54,13 @@ const { Content } = await post.render();
     p:last-child {
       margin-bottom: 0;
     }
-  }
-  .short-content {
-    font-size: 18px;
+    .post-content a {
+      color: inherit;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+    .short-content {
+      font-size: 18px;
+    }
   }
 </style>
