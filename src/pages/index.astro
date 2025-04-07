@@ -6,8 +6,8 @@ import Layout from "../layouts/Layout.astro";
 
 const collection = await getCollection("posts");
 const posts = collection
-  .slice(0, 20)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 50);
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>

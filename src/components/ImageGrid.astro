@@ -1,0 +1,49 @@
+---
+import { cn } from "../lib/utils";
+
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+// const gridStyles = () => {
+//   switch (images.length) {
+//     case 1:
+//       return "grid-cols-1";
+//     case 2:
+//       return "grid-cols-2";
+//     case 3:
+//       return "grid-cols-2 md:grid-rows-2";
+//     case 4:
+//       return "grid-cols-2 grid-rows-2";
+//     default:
+//       return "";
+//   }
+// };
+---
+
+<div
+  class={cn(
+    `grid gap-1 w-full h-full`,
+    images.length > 1 ? "grid-cols-2" : "grid-cols-1",
+  )}
+>
+  {
+    images.map((src, index) => (
+      <div
+        class={`relative ${
+          images.length === 3 && index === 0 ? "md:row-span-2" : ""
+        }`}
+      >
+        <a href={src} target="_blank" rel="noopener noreferrer">
+          <img
+            src={src}
+            alt={`image ${index + 1}`}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    ))
+  }
+</div>
