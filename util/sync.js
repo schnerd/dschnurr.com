@@ -62,7 +62,7 @@ If the tweet is quoting another tweet, include a snippet of the quoted tweet at 
     input: tweetText,
   });
 
-  const tweetMd = mdResponse.output_text;
+  let tweetMd = mdResponse.output_text;
 
   const tweetId = url.split("/").pop();
   const filenameTimestamp = dt
@@ -92,11 +92,24 @@ If the tweet is quoting another tweet, include a snippet of the quoted tweet at 
       `../public/static/${imageFilename}`,
     );
     fs.writeFileSync(imageSafePath, imageBuffer);
-    tweetMdImages.push(`![image](/static/${imageFilename})`);
+    tweetMdImages.push(imageFilename);
     i++;
   }
+  if (tweetMdImages.length > 0) {
+    tweetMd = `
+import ImageGrid from "../../components/ImageGrid.astro";
 
-  const filename = `${filenameTimestamp}-${tweetId}.md`;
+${tweetMd}
+
+<ImageGrid
+  images={[
+    ${tweetMdImages.map((i) => `'/static/${i}',`).join("\n    ")}
+  ]}
+/>
+`.trim();
+  }
+
+  const filename = `${filenameTimestamp}-${tweetId}.mdx`;
   const filePath = `../src/content/posts/${filename}`;
   const fileContent = `---
 date: "${dt.toISOString()}"
@@ -104,8 +117,6 @@ source: ${url}
 ---
 
 ${tweetMd}
-
-${tweetMdImages.join("\n\n")}
 `.trim();
 
   // Resolve path from current dirname
