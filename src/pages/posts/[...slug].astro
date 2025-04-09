@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Post from "../../components/Post.astro";
 import Layout from "../../layouts/Layout.astro";
-import { ellipsizeText, formatDate } from "../../lib/utils";
+import { extractTitleTagFromBody, formatDate } from "../../lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -16,7 +16,7 @@ type Props = CollectionEntry<"posts">;
 const post = Astro.props;
 const pageTitle =
   post.data.title ||
-  (post.body ? ellipsizeText(post.body, 50) : formatDate(post.data.date));
+  (post.body ? extractTitleTagFromBody(post.body) : formatDate(post.data.date));
 ---
 
 <Layout

@@ -30,3 +30,9 @@ export function ellipsizeText(text: string, maxLength: number): string {
   }
   return text.slice(0, maxLength) + "...";
 }
+
+export function extractTitleTagFromBody(body: string): string {
+  // Remove markdown blockquotes
+  body = body.replace(/^\s*>.*$/gm, "").trim();
+  return ellipsizeText(body, 50);
+}
